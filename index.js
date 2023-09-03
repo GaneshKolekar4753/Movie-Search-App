@@ -49,4 +49,59 @@ function displayMovieList(movies) {
     `;
     searchList.appendChild(movieListitem);
   }
+  loadMovieDetalis();
+}
+
+function loadMovieDetalis() {
+  const searchListMovies = searchList.querySelectorAll(".search-list-item");
+  // console.log(searchListMovies);
+  searchListMovies.forEach((movie) => {
+    // console.log(movie);
+    movie.addEventListener("click", async () => {
+      const movieId = movie.dataset.id;
+      // console.log(movieId);
+      searchList.classList.add("hide-search-list"); //sraech list is hide using this class
+      searchBox.value = "";
+      //calling movie details api using id search(http://www.omdbapi.com/?i=tt0944947&apikey=e9603691)
+
+      const res = await fetch(
+        `http://www.omdbapi.com/?i=${movieId}&apikey=e9603691`
+      );
+      const movieDetails = await res.json();
+
+      displayMovieResults(movieDetails);
+    });
+  });
+}
+
+//add dynamiyic movie result in result grid class
+function displayMovieResults(details) {
+    console.log(details)
+  resultGrid.innerHTML = `
+  <div class="movie-poster">
+  <img src="${(details.Poster!='N/A')?details.Poster :'image_not_found.png'}" alt="movie-poster" />
+</div>
+<div class="movie-info">
+  <h3 class="movie-title">${details.Title}</h3>
+  <ul class="movie-misc-info">
+    <li class="year">Year: ${details.Year}</li>
+    <li class="rated">Ratings: ${details.imdbRating}</li>
+    <li class="released">Released: ${details.Released}</li>
+  </ul>
+  <p class="genre"><b>Genre:</b> ${details.Genre}</p>
+  <p class="writer">
+    <b>Writer:</b> ${details.Writer}
+  </p>
+  <p class="actors">
+    <b>Actors: </b>${details.Actors}
+  </p>
+  <p class="plot">
+    <b>Plot:</b> ${details.Plot}
+  </p>
+  <p class="language"><b>Language:</b> ${details.Language}</p>
+  <p class="awards">
+    <b><i class="fas fa-award"></i></b> ${details.Awards}
+  </p>
+</div>
+    `;
 }
