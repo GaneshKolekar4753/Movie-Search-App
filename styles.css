@@ -27,10 +27,11 @@ img{
     min-height: 100vh;
     background-color: var(--dark-color);
 }
-.master .container{
+.master .main-container{
     max-width: 1200px;
     margin:0 auto;
     padding: 0 1rem;
+    
 }
 .search-bar{
     background-color:var(--md-dark-color);
@@ -77,6 +78,18 @@ img{
     color: var(--light-dark-color);
     width: 350px;
 }
+.fav-btn{
+    border: none;
+    background-color: var(--yellow-color);
+    border-radius: 7px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #292929;
+    padding: 0 5px;
+}
+
 .search-list{
     position: absolute;
     right: 0;
@@ -117,6 +130,66 @@ img{
     opacity: 0.6;
 }
 
+/* styling favourite page  */
+.fav-move-heading{
+    font-weight: 600;
+    color: #d4aa11;
+    margin-left: 3rem;
+    margin-bottom: 10px;
+}
+.fav-list{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.fav-list .fav-list-item{
+    
+    
+    background-color: var(--light-dark-color);
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--dark-color);
+    border-radius: 10px;
+    width: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+    margin: 0 auto;
+}
+
+.fav-list .fav-list-item:hover{
+    background-color: #171717;
+}
+.fav-list-item{
+    display: flex;
+    align-items: center;
+}
+.fav-item-thumbnail img{
+    width: 80px;
+    margin-right: 1rem;
+}
+.fav-item-info {
+    flex-grow: 1;
+}
+.fav-item-info h3{
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.fav-item-info p{
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    opacity: 0.6;
+}
+ .unfavourite {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--yellow-color);
+    justify-content: end;
+}
+.unfavourite:hover{
+    color: #fff;
+}
+
 /* new style of defining props  */
 /* thumbnail  */
 .search-list::-webkit-scrollbar{
@@ -152,8 +225,18 @@ img{
     padding-top: 3rem;
 }
 
-/* movie info styling  */
 
+/* movie info styling  */
+.fav-icon{
+    /* display: inline-block; */
+    font-size: 1.5rem;
+    outline: none;
+    float: right;
+    margin:3px 10px 0 0;
+}
+.fav-icon:hover{
+    color: var(--yellow-color);
+}
 .movie-title{
     font-size: 2rem;
     color: var(--yellow-color);
